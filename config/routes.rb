@@ -1,7 +1,7 @@
 Railsapp::Application.routes.draw do
-  resources :microposts
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions,   only: [:new, :create, :destroy]
+  resources :microposts, only: [:create, :destroy]
   
   root  'static_pages#home'
   match '/help',    to: 'static_pages#help',    via: 'get'
@@ -11,4 +11,4 @@ Railsapp::Application.routes.draw do
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'  
-  end
+end
